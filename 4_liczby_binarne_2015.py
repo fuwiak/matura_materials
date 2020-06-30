@@ -19,6 +19,7 @@ for i in range(1000):
         if len(we) >=3 and we[-2] == we[-3] == '0':
             ile8 += 2
 print(ile2,ile8)
+
 #3
 N=int(input())
 min = 260

@@ -1,0 +1,33 @@
+sql 2017
+5.1
+SELECT COUNT(*), Rodzaj_meczu FROM Druzyny
+INNER JOIN wyniki on
+Druzyny.Id_druzyny = wyniki.Id_druzyny
+WHERE Druzyny.Miasto like "Kucykowo"
+GROUP BY Rodzaj_meczu;
+
+b)
+
+SELECT Year(Data_meczu), count(*) FROM Druzyny
+INNER JOIN wyniki on
+Druzyny.Id_druzyny = wyniki.Id_druzyny
+WHERE Druzyny.Miasto like "Kucykowo"
+GROUP BY Year(Data_meczu)
+
+5.2
+SELECT COUNT (*),TAB1.Rok FROM 
+(SELECT YEAR(Data_meczu) AS Rok,* FROM Druzyny
+INNER JOIN wyniki on
+Druzyny.Id_druzyny = wyniki.Id_druzyny
+WHERE Druzyny.Miasto like "Kucykowo") TAB1
+GROUP BY TAB1.Rok
+5.3
+SELECT COUNT(*),TAB1.Score FROM
+(SELECT *,Switch(
+        Bramki_zdobyte - Bramki_stracone > 0, "Z",
+        Bramki_zdobyte - Bramki_stracone < 0, "P",
+        Bramki_zdobyte - Bramki_stracone = 0, "R",
+        ) AS Score
+FROM wyniki 
+WHERE Gdzie like "W") TAB1
+GROUP BY TAB1.Score;

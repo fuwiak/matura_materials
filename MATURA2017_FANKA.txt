@@ -23,10 +23,10 @@ GROUP BY TAB1.Rok
 
 5.2
 
-SELECT Druzyny.Nazwa, Druzyny.Miasto, Sum(Wyniki.Bramki_zdobyte) AS SumaOfBramki_zdobyte, Sum(Wyniki.Bramki_stracone) AS SumaOfBramki_stracone
+SELECT Druzyny.Nazwa, Druzyny.Miasto, Sum(Wyniki.Bramki_zdobyte)-Sum(Wyniki.Bramki_stracone) AS Bilans
 FROM Druzyny INNER JOIN Wyniki ON Druzyny.Id_druzyny = Wyniki.Id_druzyny
-GROUP BY Druzyny.Nazwa, Druzyny.Miasto;
-
+GROUP BY Druzyny.Nazwa, Druzyny.Miasto
+HAVING (((Sum(Wyniki.Bramki_zdobyte)-Sum(Wyniki.Bramki_stracone))=0));
 
 
 

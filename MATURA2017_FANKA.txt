@@ -29,9 +29,6 @@ GROUP BY Druzyny.Nazwa, Druzyny.Miasto
 HAVING (((Sum(Wyniki.Bramki_zdobyte)-Sum(Wyniki.Bramki_stracone))=0));
 
 
-
-
-
 5.3
 SELECT COUNT(*),TAB1.Score FROM
 (SELECT *,Switch(
@@ -42,3 +39,11 @@ SELECT COUNT(*),TAB1.Score FROM
 FROM wyniki 
 WHERE Gdzie like "W") TAB1
 GROUP BY TAB1.Score;
+
+5.4
+SELECT Count(*) AS Ilu_sedziow
+FROM sedziowie
+WHERE ((sedziowie.[nr_licencji]) Not In (SELECT nr_licencji FROM wyniki WHERE Rodzaj_meczu="P"));
+
+
+

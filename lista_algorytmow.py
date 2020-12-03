@@ -19,3 +19,12 @@ def is_prime(n):
 
 
 		return True
+	
+def perfect(num):
+	dzieln = []
+	for x in range(1, num):
+		if num % x == 0:
+			dzieln.append(x)
+	if sum(dzieln) == num:
+		return True
+	return False

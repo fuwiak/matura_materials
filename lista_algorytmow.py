@@ -28,3 +28,17 @@ def perfect(num):
 	if sum(dzieln) == num:
 		return True
 	return False
+
+def primeFactors(n):
+    num_list = []
+    for i in range(2,n + 1):
+        while n % i == 0:
+            num_list.append(i)
+            n = n / i
+        if n == 1:
+            break
+    return num_list
+
+n = 100
+
+print(primeFactors(n))
